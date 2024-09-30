@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 // localhost:8080/users
@@ -56,6 +58,20 @@ public class UserController {
         UserResponse user = this.userService.logar(loginRequest);
 
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<UserResponse>> getAll() {
+        List<User> users = userRepository.findAll();
+        List<UserResponse> userResponses = new ArrayList<>();
+        for (User user : users) {
+            userResponses.add(userService.userToResponse(user));
+
+        }
+        if (users.isEmpty()) {
+            return new ResponseEntity<>(userResponses, HttpStatus.NO_CONTENT);
+        }
+        return ResponseEntity.ok(userResponses);
     }
 
 }
