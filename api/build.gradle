@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.4'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id "com.microsoft.azure.azurewebapp" version "1.1.0"
 }
 
 group = 'br.com.yaso'
@@ -17,6 +18,20 @@ repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
 }
+
+azurewebapp {
+	subscription = '77473478-7b1d-4345-95f9-5d7f456d8c84'
+	resourceGroup = 'rgic'
+	appName = 'yaso'
+	pricingTier = 'F1'
+	region = 'brazilsouth'
+	runtime {
+		os = 'Windows'
+		webContainer = 'Java SE'
+		javaVersion = 'Java 21'
+	}
+}
+
 
 ext {
 	set('springAiVersion', "1.0.0-M2")
