@@ -52,6 +52,7 @@ public class UserController {
         UserResponse userResponse = userService.userToResponse(userPersistido);
         return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
+
     @PostMapping("login")
     public ResponseEntity<UserResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
 
