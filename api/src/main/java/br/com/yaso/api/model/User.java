@@ -2,19 +2,15 @@ package br.com.yaso.api.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 
 @Table(name = "YASO_USUARIO")
 public class User {
     @Id
-    @GeneratedValue(
-            generator = "geradorIds",
-            strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(
-            name = "geradorIds",
-            sequenceName = "sq_tb_user",
-            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SUPER_ID_USUARIO")
     private Long id;
 
@@ -27,14 +23,20 @@ public class User {
     @Column(name = "SENHA", nullable = false)
     private String password;
 
+   @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+   private List<Vacina> vacinas;
 
-    //@Lob
-    //@Column(name = "FOTO", nullable = true)
-    //private byte[] photo;
+    @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Alergia> alergias;
 
+    @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Exame> exames;
 
-    //@Column(name = "NUMERO_YASO", nullable = true)
-    //private String numero;
+    @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Medicamento> medicamentos;
+
+    @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Consulta> consultas;
 
     @Column(name = "TELEFONE", nullable = false)
     private String telephone;
@@ -44,6 +46,13 @@ public class User {
 
     }
 
+    public List<Vacina> getVacinas() {
+        return vacinas;
+    }
+
+    public void setVacinas(List<Vacina> vacinas) {
+        this.vacinas = vacinas;
+    }
     public String getTelephone() {
         return telephone;
     }
@@ -51,23 +60,7 @@ public class User {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-/*
-    public byte[] getPhoto() {
-        return photo;
-    }
 
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-*/
     public Long getId() {
         return id;
     }
@@ -98,5 +91,37 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Alergia> getAlergias() {
+        return alergias;
+    }
+
+    public void setAlergias(List<Alergia> alergias) {
+        this.alergias = alergias;
+    }
+
+    public List<Exame> getExames() {
+        return exames;
+    }
+
+    public void setExames(List<Exame> exames) {
+        this.exames = exames;
+    }
+
+    public List<Medicamento> getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(List<Medicamento> medicamentos) {
+        this.medicamentos = medicamentos;
+    }
+
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
     }
 }

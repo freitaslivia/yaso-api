@@ -12,8 +12,7 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(ErroNegocioException.class)
   public ResponseEntity<Object> handleErroNegocioException(ErroNegocioException ex, WebRequest request) {
     String mensagem = ex.getMessage();
-    return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST); // Retorna erro 400
+    return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
   }
 
-  // Outros métodos de tratamento de exceções podem ser adicionados aqui
 }
