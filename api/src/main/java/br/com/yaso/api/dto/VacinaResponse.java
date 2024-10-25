@@ -1,31 +1,25 @@
 package br.com.yaso.api.dto;
 
 
-import br.com.yaso.api.model.User;
 import br.com.yaso.api.model.Vacina;
 
 public class VacinaResponse {
     private Long id;
 
-    private String nome;
+    private String titulo;
 
     private String dataAplicacao;
 
-    private int aplicada;
-
     private byte[] comprovante;
 
-    private String recorrente;
+    private String nome;
 
-    private String dataRecorrente;
-
-    private String observacoes;
+    private String responsavel;
 
     private Long idUsuario;
 
     public VacinaResponse(Vacina vacina) {
     }
-
 
     public Long getId() {
         return id;
@@ -35,28 +29,12 @@ public class VacinaResponse {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDataAplicacao() {
-        return dataAplicacao;
-    }
-
-    public void setDataAplicacao(String dataAplicacao) {
-        this.dataAplicacao = dataAplicacao;
-    }
-
-    public int getAplicada() {
-        return aplicada;
-    }
-
-    public void setAplicada(int aplicada) {
-        this.aplicada = aplicada;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public byte[] getComprovante() {
@@ -67,31 +45,31 @@ public class VacinaResponse {
         this.comprovante = comprovante;
     }
 
-    public String getRecorrente() {
-        return recorrente;
+    public String getDataAplicacao() {
+        return dataAplicacao;
     }
 
-    public void setRecorrente(String recorrente) {
-        this.recorrente = recorrente;
+    public void setDataAplicacao(String dataAplicacao) {
+        this.dataAplicacao = dataAplicacao;
     }
 
-    public String getDataRecorrente() {
-        return dataRecorrente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDataRecorrente(String dataRecorrente) {
-        this.dataRecorrente = dataRecorrente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getObservacoes() {
-        return observacoes;
+    public String getResponsavel() {
+        return responsavel;
     }
 
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
     }
 
-    public Long getIdUsuario(User id) {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 

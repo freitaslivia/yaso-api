@@ -34,14 +34,14 @@ public class MedicamentoController {
 
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<MedicamentoResponse> create(
-            @RequestParam("nome") String nome,
-            @RequestParam("tipo") String tipo,
-            @RequestParam("data") String data,
-            @RequestParam("dosagem") String dosagem,
-            @RequestParam("periodo") String periodo,
-            @RequestParam("medico") String medico,
-            @RequestParam("idUsuario") Long idUsuario,
-            @RequestParam(value = "file", required = true) MultipartFile file) throws IOException {
+            @RequestParam(value ="nome", required = false) String nome,
+            @RequestParam(value ="tipo", required = false) String tipo,
+            @RequestParam(value ="data", required = false) String data,
+            @RequestParam(value ="dosagem", required = false) String dosagem,
+            @RequestParam(value ="periodo", required = false) String periodo,
+            @RequestParam(value ="medico", required = false) String medico,
+            @RequestParam(value ="idUsuario", required = false ) Long idUsuario,
+            @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
 
 
         Medicamento medicamento = new Medicamento();

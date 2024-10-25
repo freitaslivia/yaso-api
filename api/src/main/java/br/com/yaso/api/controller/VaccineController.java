@@ -39,11 +39,11 @@ public class VaccineController {
 
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<VacinaResponse> create(
-            @RequestParam("nome") String nome,
-            @RequestParam("dataAplicacao") String dataAplicacao,
-            @RequestParam("titulo") String titulo,
-            @RequestParam("responsavel") String responsavel,
-            @RequestParam("idUsuario") Long idUsuario,
+            @RequestParam(value = "nome", required = false) String nome,
+            @RequestParam(value = "dataAplicacao", required = false) String dataAplicacao,
+            @RequestParam(value = "titulo", required = false) String titulo,
+            @RequestParam(value = "responsavel", required = false) String responsavel,
+            @RequestParam(value = "idUsuario", required = false) Long idUsuario,
             @RequestParam(value = "comprovante", required = false) MultipartFile comprovante) throws IOException {
 
         Vacina vacina = new Vacina();

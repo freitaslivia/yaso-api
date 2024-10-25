@@ -36,11 +36,11 @@ public class ExameController {
 
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<ExameResponse> create(
-            @RequestParam("nome") String nome,
-            @RequestParam("tipo") String tipo,
-            @RequestParam("escala") String escala,
-            @RequestParam("descricao") String descricao,
-            @RequestParam("idUsuario") Long idUsuario,
+            @RequestParam(value = "nome", required = false) String nome ,
+            @RequestParam(value ="tipo", required = false) String tipo,
+            @RequestParam(value ="escala", required = false) String escala,
+            @RequestParam(value ="descricao", required = false) String descricao,
+            @RequestParam(value ="idUsuario", required = false) Long idUsuario,
             @RequestParam(value = "file", required = true) MultipartFile file) throws IOException {
 
         Exame exame = new Exame();

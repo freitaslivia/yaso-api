@@ -19,13 +19,14 @@ public class VacinaService {
 
     public Vacina requestToVacina(@Valid VacinaRequest vacinaRequest) throws IOException {
         Vacina vacina = new Vacina();
+        vacina.setTitulo(vacinaRequest.getTitulo());
         vacina.setNome(vacinaRequest.getNome());
         vacina.setDataAplicacao(vacinaRequest.getDataAplicacao());
+        vacina.setResponsavel(vacinaRequest.getResponsavel());
 
         if (vacinaRequest.getComprovante() != null && !vacinaRequest.getComprovante().isEmpty()) {
             vacina.setComprovante(vacinaRequest.getComprovante().getBytes());
         }
-       //vacina.setComprovante(vacinaRequest.getComprovante());
 
         User usuario = userRepository.findById(vacinaRequest.getIdUsuario())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado com ID: " + vacinaRequest.getIdUsuario()));
@@ -39,12 +40,11 @@ public class VacinaService {
         VacinaResponse vacinaResponse = new VacinaResponse(vacina);
 
         vacinaResponse.setId(vacina.getId());
+        vacinaResponse.setTitulo(vacina.getTitulo());
         vacinaResponse.setNome(vacina.getNome());
         vacinaResponse.setDataAplicacao(vacina.getDataAplicacao());
-
         vacinaResponse.setComprovante(vacina.getComprovante());
-
-        vacinaResponse.setDataRecorrente(vacinaResponse.getDataRecorrente());
+        vacinaResponse.setResponsavel(vacina.getResponsavel());
 
         vacinaResponse.setIdUsuario(vacina.getUsuario().getId());
 
